@@ -1,0 +1,42 @@
+<h2>Fitness Products </h2>
+
+<!-- NgFor is a built-in template directive,It is easy to iterate over something like an array or an object and create a template for each item. -->
+
+<div *ngFor="let product of products; index as productId">
+
+  <h3>
+    <!-- property binding [ ], The RouterLink directive gives the router control over the anchor element -->
+    
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+    
+     <!-- Interpolation -->
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <!-- NgIf is a built-in template directive that adds or removes parts of the DOM -->
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+  
+
+<!-- event binding -->
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts
+  [product]="product"
+  (notify)="onNotify()">
+</app-product-alerts>
+
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
